@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Product = ({ CheckoutItems }) => {
+const Product = ({ checkout }) => {
   const productthumbails = [
     "./images/image-product-1-thumbnail.jpg",
     "./images/image-product-2-thumbnail.jpg",
@@ -41,11 +41,19 @@ const Product = ({ CheckoutItems }) => {
     setProductIndex(hoveredIndex);
   }
 
+  function handleAddToCart() {
+    checkout(items);
+    setItemsNumber(0);
+  }
+
   return (
-    <div className="w-4/6 mx-auto mt-20 font-kumbh-sans flex flex-row gap-10">
-      <div className="w-1/2">
-        <img src={productimages[productIndex]} className="w-5/6 rounded-xl" />
-        <div className="flex flex-row mt-5 justify-between w-5/6 ">
+    <div className="w-5/6 mb-10 lg:mb-0 lg:w-4/6 mx-auto mt-20 font-kumbh-sans flex flex-col lg:flex-row gap-2 lg:gap-10">
+      <div className="max-[800px]:w-full lg:w-1/2">
+        <img
+          src={productimages[productIndex]}
+          className="w-full lg:w-5/6 rounded-xl"
+        />
+        <div className="hidden lg:flex flex-row mt-5 justify-between w-5/6 ">
           {productthumbails.map((thumbnail, index) => {
             return (
               <img
@@ -74,14 +82,14 @@ const Product = ({ CheckoutItems }) => {
           })}
         </div>
       </div>
-      <div className="flex flex-col mt-7 w-1/2">
+      <div className="flex flex-col mt-7 w-full lg:w-1/2">
         <p className="text-Dark-grayish-blue uppercase text-sm font-medium tracking-wide">
           Sneaker Company
         </p>
-        <h1 className="mt-3 text-5xl font-bold text-Black">
+        <h1 className="mt-3 text-xl lg:text-5xl font-bold text-Black">
           Fall Limited Edition Sneakers
         </h1>
-        <p className="mt-8 text-Dark-grayish-blue leading-7">
+        <p className="mt-2 lg:mt-8 text-Dark-grayish-blue leading-7">
           These low-profile sneakers are your perfect casual wear companion.
           Featuring a durable rubber outer sole, they’ll withstand everything
           the weather can offer.
@@ -93,8 +101,8 @@ const Product = ({ CheckoutItems }) => {
         <p className="mt-2 text-Grayish-blue font-medium">
           <del>$250.00</del>
         </p>
-        <div className="flex flex-row gap-5 mt-5">
-          <div className="flex flex-row items-center w-1/3 justify-between bg-Light-grayish-blue rounded-lg p-3">
+        <div className="flex flex-col lg:flex-row gap-5 mt-5">
+          <div className="flex flex-row items-center w-full lg:w-1/3 justify-between bg-Light-grayish-blue rounded-lg p-3">
             <button
               onClick={decrementItems}
               className="text-3xl text-Orange font-bold cursor-pointer"
@@ -110,8 +118,8 @@ const Product = ({ CheckoutItems }) => {
             </button>
           </div>
           <button
-            onClick={CheckoutItems}
-            className="w-2/3 bg-Orange text-Very-dark-blue font-bold rounded-lg flex flex-row items-center justify-center gap-3 p-4 shadow-lg cursor-pointer hover:bg-Pale-orange"
+            onClick={handleAddToCart}
+            className="w-full lg:w-2/3 bg-Orange text-Very-dark-blue font-bold rounded-lg flex flex-row items-center justify-center gap-3 p-4 shadow-lg cursor-pointer hover:bg-Pale-orange"
           >
             <img src="./images/icon-cart.svg" />
             <span>Add to cart</span>
@@ -123,3 +131,4 @@ const Product = ({ CheckoutItems }) => {
 };
 
 export default Product;
+// Ensure that the `checkout` prop is updated correctly when the `items` state changes

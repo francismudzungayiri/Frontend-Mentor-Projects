@@ -5,13 +5,13 @@ import Product from "./components/Product";
 const App = () => {
   const [checkoutIterms, setCheckoutIterms] = useState(0);
 
-  function handleCheckOut() {
-    setCheckoutIterms(checkoutIterms);
+  function handleCheckOut(itemscount) {
+    setCheckoutIterms(itemscount);
   }
   return (
     <>
-      <NavBar />
-      <Product addItems={handleCheckOut} />
+      <NavBar itemOrdered={checkoutIterms} />
+      <Product checkout={handleCheckOut} />
     </>
   );
 };
