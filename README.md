@@ -1,5 +1,7 @@
 # PROJECT 1 - E-commerce Project
 
+![alt text](</projects screenshots/ecommerce-product-page.png>)
+
 ## Overview
 
 This project is a responsive e-commerce website built to showcase products and provide users with a seamless shopping experience. It is designed to be visually appealing, user-friendly, and functional across various devices.
